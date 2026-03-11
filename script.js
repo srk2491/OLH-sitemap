@@ -5,7 +5,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 let allSites = [];
-let flatReport = []; // Stores the flattened data from ashraya_master_report.json
+let flatReport = [];
 let userLat = null;
 let userLng = null;
 
@@ -26,7 +26,9 @@ if (navigator.geolocation) {
 
 // Distance Calculation
 function calculateDistance(lat1, lon1, lat2, lon2) {
-    var R = 6371; // Radius of earth in km
+
+    var R = 6371;
+
     var dLat = (lat2 - lat1) * Math.PI / 180;
     var dLon = (lon2 - lon1) * Math.PI / 180;
 
@@ -37,18 +39,18 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
         Math.sin(dLon/2) * Math.sin(dLon/2);
 
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
     return R * c;
 }
 
 function renderMarkers() {
-    // Remove existing markers except the base tile layer
+
     map.eachLayer(function(layer) {
         if (layer instanceof L.Marker || layer instanceof L.CircleMarker) {
             map.removeLayer(layer);
         }
     });
 
-    // Re-add user marker if available
     if (userLat && userLng) {
         L.circleMarker([userLat, userLng], {
             radius: 6,
@@ -62,11 +64,10 @@ function renderMarkers() {
     let searchValue = document.getElementById("searchBox").value.toLowerCase();
 
     allSites.forEach(site => {
-        // Filter Logic
+
         if (talukValue !== "All" && site.taluk !== talukValue) return;
         if (!site.grama_name_en.toLowerCase().includes(searchValue)) return;
 
-        // Create Marker
         let marker = L.marker(
             [site.latitude, site.longitude],
             {
@@ -97,53 +98,81 @@ function renderMarkers() {
 
         marker.bindTooltip(site.grama_name_en, { direction: "top" });
 
-        // Click Event: Show Details and Ashraya Flat Data
         marker.on('click', function() {
+
             map.setView([site.latitude, site.longitude], 14);
 
-            // Match current site with the Ashraya report using synchronized English name
             const match = flatReport.find(report => report.location_en === site.grama_name_en);
 
-            // Construct Flat Availability HTML
             let flatInfoHtml = `
                 <div style="margin-top:10px; padding:10px; background:#fff3e0; border-left:4px solid #ff9800; border-radius:4px;">
                     <p style="margin:0; font-size:12px; color:#e65100;">Data not found in Ashraya Report</p>
                 </div>`;
-            
+
             if (match) {
+
                 flatInfoHtml = `
                     <div style="margin-top:10px; padding:10px; background:#e3f2fd; border-left:4px solid #1976d2; border-radius:4px;">
                         <strong style="font-size:13px; color:#0d47a1;">Available Flats:</strong><br>
+
                         <table style="width:100%; font-size:12px; margin-top:5px; border-collapse:collapse;">
-                            <tr><td>SC (ಪ.ಜಾ):</td><td style="text-align:right;"><b>${match["SC flats"]}</b></td></tr>
-                            <tr><td>General (ಸಾಮಾನ್ಯ):</td><td style="text-align:right;"><b>${match["GEN flats"]}</b></td></tr>
-                            <tr><td>Minority (ಅಲ್ಪಸಂಖ್ಯಾತರು):</td><td style="text-align:right;"><b>${match["Min Flats"]}</b></td></tr>
-                            <tr style="border-top:1px solid #ccc;"><td><b>Total (ಒಟ್ಟು):</b></td><td style="text-align:right;"><b>${match["Total"]}</b></td></tr>
+
+                        <tr>
+                        <td>SC (ಪ.ಜಾ):</td>
+                        <td style="text-align:right;"><b>${match["SC flats"]}</b></td>
+                        </tr>
+
+                        <tr>
+                        <td>General (ಸಾಮಾನ್ಯ):</td>
+                        <td style="text-align:right;"><b>${match["GEN flats"]}</b></td>
+                        </tr>
+
+                        <tr>
+                        <td>Minority (ಅಲ್ಪಸಂಖ್ಯಾತರು):</td>
+                        <td style="text-align:right;"><b>${match["Min Flats"]}</b></td>
+                        </tr>
+
+                        <tr style="border-top:1px solid #ccc;">
+                        <td><b>Total (ಒಟ್ಟು):</b></td>
+                        <td style="text-align:right;"><b>${match["Total"]}</b></td>
+                        </tr>
+
                         </table>
                     </div>
                 `;
             }
 
             let distanceText = "Distance calculation unavailable";
+
             if (userLat && userLng) {
+
                 let dist = calculateDistance(userLat, userLng, site.latitude, site.longitude);
+
                 distanceText = dist.toFixed(2) + " km";
             }
 
             document.getElementById('details').innerHTML = `
+
                 <h3 style="margin:0 0 5px 0;">${site.grama_name_en}</h3>
+
                 <small>${site.grama_name_kn}</small><br><br>
+
                 <b>Taluk:</b> ${site.taluk}<br>
+
                 <b>Survey No:</b> ${site.survey_number}<br>
+
                 <b>Phase:</b> ${site.phase}<br>
+
                 <b>Distance:</b> ${distanceText}<br>
-                
+
                 ${flatInfoHtml}
-                
+
                 <br>
-                <a target="_blank" style="display:block; text-align:center; padding:8px; background:#1976d2; color:white; text-decoration:none; border-radius:4px;"
-                   href="https://www.google.com/maps/dir/?api=1&destination=${site.latitude},${site.longitude}">
-                   Navigate to Site
+
+                <a target="_blank"
+                style="display:block; text-align:center; padding:8px; background:#1976d2; color:white; text-decoration:none; border-radius:4px;"
+                href="https://www.google.com/maps/dir/?api=1&destination=${site.latitude},${site.longitude}">
+                Navigate to Site
                 </a>
             `;
         });
@@ -152,34 +181,45 @@ function renderMarkers() {
     });
 }
 
-// Load both JSON files simultaneously
+
+// CACHE FIX APPLIED HERE
 Promise.all([
-    fetch('data/sites.json').then(res => res.json()),
-    fetch('ashraya_master_report.json').then(res => res.json())
+    fetch('data/sites.json?v=' + new Date().getTime()).then(res => res.json()),
+    fetch('ashraya_master_report.json?v=' + new Date().getTime()).then(res => res.json())
 ])
+
 .then(([sitesData, reportData]) => {
+
     allSites = sitesData;
-    
-    // Flatten nested report (Category > Data array) into a single lookup array
+
     flatReport = reportData.flatMap(category => category.data);
 
-    // Initialize Taluk Filter Dropdown
     let taluks = [...new Set(sitesData.map(s => s.taluk))];
+
     let talukDropdown = document.getElementById("talukFilter");
 
     taluks.forEach(taluk => {
+
         let option = document.createElement("option");
+
         option.value = taluk;
+
         option.text = taluk;
+
         talukDropdown.appendChild(option);
     });
 
     renderMarkers();
 })
+
 .catch(err => {
+
     console.error("Error loading data files:", err);
+
     document.getElementById('details').innerHTML = "Error loading data. Please check if data/sites.json and ashraya_master_report.json exist.";
 });
 
+
 document.getElementById("talukFilter").addEventListener("change", renderMarkers);
+
 document.getElementById("searchBox").addEventListener("input", renderMarkers);
