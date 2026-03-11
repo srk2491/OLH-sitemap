@@ -1,47 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Housing Site Map</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
-    <link rel="stylesheet" href="style.css" />
+<title>Housing Site Map</title>
+
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<link rel="stylesheet" href="style.css"/>
+
 </head>
 
 <body>
 
 <div id="sidebar">
-    <h2>One lakh CM Housing Site Dashboard</h2>
 
-    <label>Phase:</label>
-    <select id="phaseFilter">
-        <option value="All">All</option>
-        <option value="Phase 1">Phase 1</option>
-        <option value="Phase 2">Phase 2</option>
-    </select>
+<h2>Housing Site Dashboard</h2>
 
-    <label>Taluk:</label>
-    <select id="talukFilter">
-        <option value="All">All</option>
-    </select>
+<label>Taluk</label>
+<select id="talukFilter">
+<option value="All">All</option>
+</select>
 
-    <label>Search Village:</label>
-    <input type="text" id="searchBox" placeholder="Type village name..." />
+<label>Search Village</label>
+<input type="text" id="searchBox" placeholder="Type village name">
 
-    <hr>
+<hr>
 
-    <div id="details">
-        Click on a site marker to view details.
-    </div>
+<div id="details">
+
+Click a marker to see site details.
+
+</div>
+
 </div>
 
 <div id="map"></div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
 <script src="script.js"></script>
 
 </body>
