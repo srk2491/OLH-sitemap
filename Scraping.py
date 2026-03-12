@@ -55,13 +55,17 @@ chrome_options = Options()
 chrome_options.add_argument("--headless=new")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--disable-gpu")
+chrome_options.add_argument("--remote-debugging-port=9222")
 
 driver = webdriver.Chrome(
     service=Service(ChromeDriverManager().install()),
     options=chrome_options
 )
 
-wait = WebDriverWait(driver, 15)
+driver.set_page_load_timeout(300)
+
+wait = WebDriverWait(driver, 20)
 
 
 def scrape_sub_table():
@@ -105,7 +109,27 @@ def scrape_sub_table():
 
 try:
 
-    driver.get("https://ashraya.karnataka.gov.in/cm_selection_flat/frmConstwise_Report_Available.aspx")
+    url = "https://ashraya.karnataka.gov.in/cm_selection_flat/frmConstwise_Report_Available.aspx"
+
+    for attempt in range(3):
+
+        try:
+
+            print(f"Opening website (attempt {attempt+1})")
+
+            driver.get(url)
+
+            break
+
+        except Exception as e:
+
+            print("Page load failed, retrying...")
+
+            time.sleep(10)
+
+            if attempt == 2:
+                raise e
+
 
     all_master_data = []
 
@@ -124,6 +148,8 @@ try:
         print("Scraping:", category_name)
 
         link.click()
+
+        time.sleep(2)
 
         table_data = scrape_sub_table()
 
