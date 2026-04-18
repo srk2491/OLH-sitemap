@@ -13,7 +13,7 @@
     {
         "id": 2,
         "taluk": "Yelahanka",
-        "grama_name_kn": "ನವ ರತ್ನ ಅಗರಹಾರ",
+        "grama_name_kn": "ನವರತ್ನ ಅಗ್ರಹಾರ",
         "grama_name_en": "Navaratna Agrahara",
         "survey_number": "14",
         "extent_acre_gunta": "01-02",
@@ -79,7 +79,7 @@
     {
         "id": 8,
         "taluk": "Bengaluru East",
-        "grama_name_kn": "ನಿಂಬೆಕಾಯಿ ಪುರ",
+        "grama_name_kn": "ನಿಂಬೆಕಾಯಿಪುರ",
         "grama_name_en": "Nimbekayipura",
         "survey_number": "52",
         "extent_acre_gunta": "2-00",
@@ -178,8 +178,8 @@
     {
         "id": 17,
         "taluk": "Anekal",
-        "grama_name_kn": "ವೆಣಸಿಗನಹಳ್ಳಿ",
-        "grama_name_en": "Venasiganahalli",
+        "grama_name_kn": "ಮೆಣಸಿಗನಹಳ್ಳಿ",
+        "grama_name_en": "Menasiganahalli",
         "survey_number": "145",
         "extent_acre_gunta": "2-00",
         "latitude": 12.680642,
@@ -238,7 +238,7 @@
         "survey_number": "29",
         "extent_acre_gunta": "1-01",
         "latitude": 12.760914,
-        "longitude": 77.62439,
+        "longitude": 77.624390,
         "phase": "Phase 2"
     },
     {
@@ -288,8 +288,8 @@
     {
         "id": 27,
         "taluk": "Bengaluru South",
-        "grama_name_kn": "ಪುಣಮಾರನಹಳ್ಳಿ",
-        "grama_name_en": "Punamaranahalli",
+        "grama_name_kn": "ಪುನಾಗಮಾರನಹಳ್ಳಿ",
+        "grama_name_en": "Punagamaranahalli",
         "survey_number": "13",
         "extent_acre_gunta": "4-00",
         "latitude": 12.921147,
@@ -336,7 +336,7 @@
         "grama_name_en": "Mallasandra",
         "survey_number": "35",
         "extent_acre_gunta": "19-34",
-        "latitude": 13.00614,
+        "latitude": 13.006140,
         "longitude": 77.403155,
         "phase": "Phase 2"
     },
@@ -347,7 +347,7 @@
         "grama_name_en": "Mallasandra",
         "survey_number": "17",
         "extent_acre_gunta": "7-38",
-        "latitude": 13.00873,
+        "latitude": 13.008730,
         "longitude": 77.399642,
         "phase": "Phase 2"
     },
@@ -518,13 +518,46 @@
     },
     {
         "id": 48,
+        "taluk": "Anekal",
+        "grama_name_kn": "ಯಮರೆ",
+        "grama_name_en": "Yamare",
+        "survey_number": "195",
+        "extent_acre_gunta": "5-05",
+        "latitude": 12.870545,
+        "longitude": 77.761535,
+        "phase": "Phase 2"
+    },
+    {
+        "id": 49,
+        "taluk": "Anekal",
+        "grama_name_kn": "ಯಮರೆ",
+        "grama_name_en": "Yamare",
+        "survey_number": "88",
+        "extent_acre_gunta": "4-03",
+        "latitude": 12.865265,
+        "longitude": 77.758338,
+        "phase": "Phase 2"
+    },
+    {
+        "id": 50,
+        "taluk": "Bengaluru North",
+        "grama_name_kn": "ಅಗ್ರಹಾರಪಾಳ್ಯ",
+        "grama_name_en": "Agraharapalya",
+        "survey_number": "29",
+        "extent_acre_gunta": "10-24",
+        "latitude": 13.129088,
+        "longitude": 77.449815,
+        "phase": "Phase 2"
+    },
+{
+        "id": 51,
         "taluk": "Yelahanka",
-        "grama_name_kn": "ಮುತ್ತುಗದಹಳ್ಳಿ",
-        "grama_name_en": "Muttugadahalli",
-        "survey_number": "22",
-        "extent_acre_gunta": "11-31",
+        "grama_name_kn": "ಮುತ್ತಗದಹಳ್ಳಿ ",
+        "grama_name_en": "Muthugadahalli",
+        "survey_number": "29",
+        "extent_acre_gunta": "10-24",
         "latitude": 13.151168,
-        "longitude": 77.53051,
+        "longitude": 77.530510,
         "phase": "Phase 2"
     }
 ]

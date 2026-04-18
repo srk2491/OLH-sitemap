@@ -1,44 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Housing Site Map</title>
+    <title>Site Map</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-
-    <!-- Marker Cluster CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-<div id="sidebar">
-    <h2>Housing Site Dashboard</h2>
+<div id="container">
 
-    <label for="talukFilter">Taluk:</label>
-    <select id="talukFilter">
-        <option value="All">All</option>
-    </select>
+    <!-- Sidebar -->
+    <div id="sidebar">
 
-    <label for="searchBox">Search Village:</label>
-    <input type="text" id="searchBox" placeholder="Type village name..." />
+        <h2>Housing Sites</h2>
 
-    <hr>
+        <input type="text" id="searchBox" placeholder="Search site..." />
 
-    <div id="details">
-        Click on a site marker to view details.
+        <select id="talukFilter">
+            <option value="All">All Taluks</option>
+        </select>
+
+        <h3>Sites</h3>
+        <div id="siteList"></div>
+
+        <h3>Details</h3>
+        <div id="details">Click a site</div>
+
     </div>
+
+    <!-- Map -->
+    <div id="map"></div>
+
 </div>
 
-<div id="map"></div>
-
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 <script src="script.js"></script>
 
 </body>
