@@ -3,76 +3,117 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/* ---------- DEFAULT (MOBILE FIRST) ---------- */
 
-/* Main layout */
-#container {
-    display: flex;
+/* FULL SCREEN MAP */
+#map {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100vh;
+    z-index: 1;
 }
 
-
-/* Sidebar */
+/* HIDDEN BOTTOM PANEL */
 #sidebar {
-    width: 300px;
-    height: 100vh;                /* 🔥 ensures full height */
-    display: flex;
-    flex-direction: column;
-    border-right: 1px solid #ccc;
-    background: #f9f9f9;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 55vh;
+    background: white;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.3);
+    z-index: 1000;
+
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+
     padding: 10px;
     box-sizing: border-box;
 }
 
+/* OPEN PANEL */
+#sidebar.open {
+    transform: translateY(0);
+}
 
-/* Inputs */
+/* DRAG HANDLE */
+#sidebar::before {
+    content: "";
+    width: 40px;
+    height: 4px;
+    background: #ccc;
+    display: block;
+    margin: 8px auto;
+    border-radius: 2px;
+}
+
+/* INPUTS */
 #sidebar input,
 #sidebar select {
-    margin-bottom: 10px;
-    padding: 6px;
     width: 100%;
-    box-sizing: border-box;
+    padding: 8px;
+    margin-bottom: 8px;
 }
 
-
-/* 🔥 SCROLLABLE SITE LIST (FIXED HEIGHT FOR RELIABILITY) */
+/* LIST */
 #siteList {
-    height: 300px;                /* ensures visibility */
-    overflow-y: auto;             /* scroll enabled */
+    height: 150px;
+    overflow-y: auto;
     border: 1px solid #ddd;
-    background: white;
-    padding: 5px;
-    margin-bottom: 10px;
 }
 
-
-/* Each site row */
 #siteList div {
-    padding: 6px;
-    border-bottom: 1px solid #eee;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-}
-
-
-/* Hover effect */
-#siteList div:hover {
-    background: #f0f0f0;
-}
-
-
-/* Details panel */
-#details {
-    background: white;
     padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    min-height: 150px;
-    overflow-y: auto;             /* if content is long */
+    border-bottom: 1px solid #eee;
 }
 
+/* DETAILS */
+#details {
+    margin-top: 8px;
+    font-size: 14px;
+}
 
-/* Map */
-#map {
-    flex: 1;
+/* FLOATING BUTTON */
+#toggleBtn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1100;
+    background: #1976d2;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+}
+
+/* ---------- DESKTOP OVERRIDE ---------- */
+
+@media (min-width: 768px) {
+
+    #container {
+        display: flex;
+        height: 100vh;
+    }
+
+    #map {
+        position: static;
+        flex: 1;
+        height: 100vh;
+    }
+
+    #sidebar {
+        position: static;
+        transform: none;
+        width: 300px;
+        height: auto;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    #toggleBtn {
+        display: none;
+    }
 }
