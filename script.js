@@ -11,17 +11,11 @@ let userLng = null;
 let selectedMarker = null;
 let markerMap = {};
 
-
-// -------------------- COLOR --------------------
-
 function getMarkerColor(total) {
     if (!total || total <= 0) return "#d32f2f";
     if (total <= 10) return "#f57c00";
     return "#388e3c";
 }
-
-
-// -------------------- ICON --------------------
 
 function createMarkerIcon(id, total = 0, selected = false) {
     let color = selected ? "#000" : getMarkerColor(total);
@@ -45,9 +39,7 @@ function createMarkerIcon(id, total = 0, selected = false) {
     });
 }
 
-
-// -------------------- LOCATION --------------------
-
+/* LOCATION */
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(pos => {
         userLat = pos.coords.latitude;
@@ -60,13 +52,11 @@ if (navigator.geolocation) {
             fillOpacity: 1
         }).addTo(map);
 
-        renderMarkers(); // important fix
+        renderMarkers();
     });
 }
 
-
-// -------------------- DISTANCE --------------------
-
+/* DISTANCE */
 function calculateDistance(lat1, lon1, lat2, lon2) {
     var R = 6371;
     var dLat = (lat2 - lat1) * Math.PI/180;
@@ -81,33 +71,23 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
     return R * c;
 }
 
-
-// -------------------- LIST --------------------
-
+/* LIST */
 function renderSiteList(sites) {
-
     let html = "";
 
     sites.forEach(site => {
-
         let match = flatReport.find(r => r.location_en === site.grama_name_en);
         let total = match ? parseInt(match["Total"]) || 0 : 0;
 
         let color = getMarkerColor(total);
 
         html += `
-            <div onclick="selectSite(${site.id})"
-            style="padding:6px; display:flex; justify-content:space-between; cursor:pointer; border-bottom:1px solid #eee;">
-
-                <span>${site.id}. ${site.grama_name_en}</span>
-
-                <span style="
-                    width:10px;
-                    height:10px;
-                    background:${color};
-                    border-radius:50%;
-                "></span>
-
+            <div onclick="selectSite(${site.id})">
+                ${site.id}. ${site.grama_name_en}
+                <span style="float:right;
+                width:10px;height:10px;
+                background:${color};
+                border-radius:50%;"></span>
             </div>
         `;
     });
@@ -115,21 +95,13 @@ function renderSiteList(sites) {
     document.getElementById("siteList").innerHTML = html;
 }
 
-
-// -------------------- SELECT --------------------
-
+/* SELECT */
 function selectSite(id) {
-
     let marker = markerMap[id];
-
-    if (marker) {
-        marker.fire('click');
-    }
+    if (marker) marker.fire('click');
 }
 
-
-// -------------------- RENDER --------------------
-
+/* RENDER */
 function renderMarkers() {
 
     map.eachLayer(layer => {
@@ -138,14 +110,7 @@ function renderMarkers() {
 
     markerMap = {};
 
-    let taluk = document.getElementById("talukFilter").value;
-    let search = document.getElementById("searchBox").value.toLowerCase();
-
-    let filtered = allSites.filter(s => {
-        if (taluk !== "All" && s.taluk !== taluk) return false;
-        if (!s.grama_name_en.toLowerCase().includes(search)) return false;
-        return true;
-    });
+    let filtered = allSites;
 
     filtered.forEach(site => {
 
@@ -161,13 +126,10 @@ function renderMarkers() {
 
         marker.on('click', function() {
 
-            // Reset previous
             if (selectedMarker) {
-                let prev = selectedMarker;
-                prev.setIcon(createMarkerIcon(prev.siteId, prev.total));
+                selectedMarker.setIcon(createMarkerIcon(selectedMarker.siteId, selectedMarker.total));
             }
 
-            // Highlight current
             marker.setIcon(createMarkerIcon(site.id, total, true));
 
             selectedMarker = marker;
@@ -176,65 +138,21 @@ function renderMarkers() {
 
             map.setView([site.latitude, site.longitude], 14);
 
-            let dist = "N/A";
-            if (userLat !== null && userLng !== null) {
-                dist = calculateDistance(userLat, userLng, site.latitude, site.longitude).toFixed(2) + " km";
-            }
+            let dist = userLat
+                ? calculateDistance(userLat, userLng, site.latitude, site.longitude).toFixed(2) + " km"
+                : "N/A";
 
-            // 🔥 FULL DETAILS RESTORED
             document.getElementById("details").innerHTML = `
-
                 <h3>${site.id}. ${site.grama_name_en}</h3>
-
-                <small>${site.grama_name_kn}</small><br><br>
-
                 <b>Taluk:</b> ${site.taluk}<br>
-                <b>Survey No:</b> ${site.survey_number}<br>
-                <b>Phase:</b> ${site.phase}<br>
-                <b>Distance:</b> ${dist}<br><br>
-
-                <div style="
-                    background:#f1f8e9;
-                    padding:8px;
-                    border-radius:5px;
-                    border-left:4px solid #689f38;
-                ">
-
-                    <b>Available Flats</b><br><br>
-
-                    <table style="width:100%; font-size:13px;">
-
-                        <tr>
-                            <td>SC (ಪ.ಜಾ):</td>
-                            <td style="text-align:right;"><b>${match ? match["SC flats"] : 0}</b></td>
-                        </tr>
-
-                        <tr>
-                            <td>General (ಸಾಮಾನ್ಯ):</td>
-                            <td style="text-align:right;"><b>${match ? match["GEN flats"] : 0}</b></td>
-                        </tr>
-
-                        <tr>
-                            <td>Minority (ಅಲ್ಪಸಂಖ್ಯಾತರು):</td>
-                            <td style="text-align:right;"><b>${match ? match["Min Flats"] : 0}</b></td>
-                        </tr>
-
-                        <tr style="border-top:1px solid #ccc;">
-                            <td><b>Total (ಒಟ್ಟು):</b></td>
-                            <td style="text-align:right;"><b>${match ? match["Total"] : 0}</b></td>
-                        </tr>
-
-                    </table>
-                </div>
-
-                <br>
-
-                <a target="_blank"
-                style="display:block; text-align:center; padding:8px; background:#1976d2; color:white; text-decoration:none; border-radius:4px;"
-                href="https://www.google.com/maps/dir/?api=1&destination=${site.latitude},${site.longitude}">
-                Navigate to Site
-                </a>
+                <b>Distance:</b> ${dist}<br>
+                <b>Total:</b> ${total}
             `;
+
+            // auto open panel on mobile
+            if (window.innerWidth < 768) {
+                document.getElementById("sidebar").classList.add("open");
+            }
         });
 
         marker.addTo(map);
@@ -243,57 +161,28 @@ function renderMarkers() {
     renderSiteList(filtered);
 }
 
-
-// -------------------- LOAD --------------------
-
+/* LOAD */
 Promise.all([
     fetch('data/sites.json?v=' + new Date().getTime()).then(r => r.json()),
     fetch('ashraya_master_report.json?v=' + new Date().getTime()).then(r => r.json())
 ])
 .then(([sites, report]) => {
-
     allSites = sites;
     flatReport = report.flatMap(c => c.data);
-
-    let taluks = [...new Set(sites.map(s => s.taluk))];
-
-    let dropdown = document.getElementById("talukFilter");
-
-    taluks.forEach(t => {
-        let opt = document.createElement("option");
-        opt.value = t;
-        opt.text = t;
-        dropdown.appendChild(opt);
-    });
-
     renderMarkers();
 });
 
+/* TOGGLE */
+const btn = document.getElementById("toggleBtn");
+const sidebar = document.getElementById("sidebar");
 
-// -------------------- EVENTS --------------------
+btn.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+});
 
-document.getElementById("talukFilter").addEventListener("change", renderMarkers);
-document.getElementById("searchBox").addEventListener("input", renderMarkers);
-
-
-// -------------------- LEGEND --------------------
-
-var legend = L.control({ position: 'topright' });
-
-legend.onAdd = function () {
-    var div = L.DomUtil.create('div');
-    div.style.background = "white";
-    div.style.padding = "10px";
-    div.style.fontSize = "12px";
-
-    div.innerHTML = `
-        <b>Legend</b><br><br>
-        🔴 0 Flats<br>
-        🟠 1–10 Flats<br>
-        🟢 >10 Flats<br>
-        ⚫ Selected
-    `;
-    return div;
-};
-
-legend.addTo(map);
+/* ensure closed on mobile */
+window.addEventListener("load", () => {
+    if (window.innerWidth < 768) {
+        sidebar.classList.remove("open");
+    }
+});
