@@ -3,9 +3,9 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* ---------- DEFAULT (MOBILE FIRST) ---------- */
+/* ---------- MOBILE FIRST ---------- */
 
-/* FULL SCREEN MAP */
+/* MAP */
 #map {
     position: fixed;
     top: 0;
@@ -15,23 +15,31 @@ body {
     z-index: 1;
 }
 
-/* HIDDEN BOTTOM PANEL */
+/* SIDEBAR */
 #sidebar {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 55vh;
+    height: 58vh;
+
     background: white;
+
     border-radius: 16px 16px 0 0;
+
     box-shadow: 0 -2px 12px rgba(0,0,0,0.3);
+
     z-index: 1000;
 
     transform: translateY(100%);
+
     transition: transform 0.3s ease;
 
     padding: 10px;
+
     box-sizing: border-box;
+
+    overflow-y: auto;
 }
 
 /* OPEN PANEL */
@@ -39,57 +47,185 @@ body {
     transform: translateY(0);
 }
 
-/* DRAG HANDLE */
+/* HANDLE */
 #sidebar::before {
     content: "";
+
     width: 40px;
     height: 4px;
+
     background: #ccc;
+
     display: block;
+
     margin: 8px auto;
+
     border-radius: 2px;
 }
 
 /* INPUTS */
 #sidebar input,
 #sidebar select {
+
     width: 100%;
-    padding: 8px;
-    margin-bottom: 8px;
+
+    padding: 10px;
+
+    margin-bottom: 10px;
+
+    box-sizing: border-box;
 }
 
-/* LIST */
+/* SITE LIST */
 #siteList {
-    height: 150px;
+
+    height: 180px;
+
     overflow-y: auto;
+
     border: 1px solid #ddd;
+
+    margin-bottom: 10px;
 }
 
 #siteList div {
+
     padding: 10px;
+
     border-bottom: 1px solid #eee;
+
+    cursor: pointer;
 }
 
 /* DETAILS */
 #details {
-    margin-top: 8px;
-    font-size: 14px;
+
+    background: #fafafa;
+
+    padding: 10px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 5px;
+}
+
+/* NAV BUTTON */
+.nav-btn {
+
+    display: block;
+
+    text-align: center;
+
+    padding: 10px;
+
+    background: #1976d2;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 6px;
+
+    margin-top: 10px;
+}
+
+/* LEGEND */
+#legend {
+
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    z-index: 1000;
+
+    background: white;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+#legend h4 {
+
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.legend-circle {
+
+    display: inline-block;
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    margin-right: 6px;
+
+    vertical-align: middle;
+}
+
+.red {
+    background: #d32f2f;
+}
+
+.orange {
+    background: #f57c00;
+}
+
+.green {
+    background: #388e3c;
+}
+
+.black {
+    background: black;
 }
 
 /* FLOATING BUTTON */
 #toggleBtn {
+
     position: fixed;
+
     top: 15px;
     left: 15px;
+
     z-index: 1100;
+
     background: #1976d2;
+
     color: white;
+
     border: none;
+
     padding: 10px 14px;
+
     border-radius: 8px;
 }
 
-/* ---------- DESKTOP OVERRIDE ---------- */
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 768px) {
+
+    #legend {
+
+        top: 70px;
+
+        right: 10px;
+
+        font-size: 12px;
+
+        padding: 8px;
+    }
+}
+
+/* ---------- DESKTOP ---------- */
 
 @media (min-width: 768px) {
 
@@ -99,17 +235,26 @@ body {
     }
 
     #map {
+
         position: static;
+
         flex: 1;
+
         height: 100vh;
     }
 
     #sidebar {
+
         position: static;
+
         transform: none;
-        width: 300px;
+
+        width: 320px;
+
         height: auto;
+
         border-radius: 0;
+
         box-shadow: none;
     }
 
