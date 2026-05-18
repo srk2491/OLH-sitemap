@@ -5,26 +5,26 @@
             {
                 "location_kn": "ಆನೇಕಲ್ ಗ್ರಾಮಾಂತರ",
                 "location_en": "Anekal Gramanthara",
-                "SC flats": "386",
+                "SC flats": "387",
                 "GEN flats": "444",
                 "Min Flats": "91",
-                "Total": "921"
+                "Total": "922"
             },
             {
                 "location_kn": "ಕೂಗೂರು",
                 "location_en": "Kooguru",
                 "SC flats": "7",
-                "GEN flats": "17",
-                "Min Flats": "2",
-                "Total": "26"
+                "GEN flats": "15",
+                "Min Flats": "3",
+                "Total": "25"
             },
             {
                 "location_kn": "ಗೂಳಿಮಂಗಲ",
                 "location_en": "Goolimangala",
-                "SC flats": "2",
-                "GEN flats": "1",
+                "SC flats": "0",
+                "GEN flats": "0",
                 "Min Flats": "0",
-                "Total": "3"
+                "Total": "0"
             },
             {
                 "location_kn": "ಚಿಕ್ಕನಹಳ್ಳಿ ಕಮ್ಮನಹಳ್ಳಿ",
@@ -100,10 +100,10 @@
             {
                 "location_kn": "ಜೆ ಭಿಂಗಿಪುರ",
                 "location_en": "J. Bhangipura",
-                "SC flats": "3",
+                "SC flats": "1",
                 "GEN flats": "0",
                 "Min Flats": "0",
-                "Total": "3"
+                "Total": "1"
             },
             {
                 "location_kn": "ದೊಡ್ಡನಾಗಮಂಗಲ",
@@ -138,25 +138,25 @@
                 "location_kn": "ನವರತ್ನ ಅಗ್ರಹಾರ",
                 "location_en": "Navaratna Agrahara",
                 "SC flats": "0",
-                "GEN flats": "1",
+                "GEN flats": "2",
                 "Min Flats": "1",
-                "Total": "2"
+                "Total": "3"
             },
             {
                 "location_kn": "ಬೈಯ್ಯಪ್ಪನಹಳ್ಳಿ",
                 "location_en": "Kyalasanahalli",
                 "SC flats": "4",
-                "GEN flats": "1",
+                "GEN flats": "2",
                 "Min Flats": "0",
-                "Total": "5"
+                "Total": "6"
             },
             {
                 "location_kn": "ಬೋಯಿಲಹಳ್ಳಿ",
                 "location_en": "Bidarahalli",
                 "SC flats": "7",
                 "GEN flats": "7",
-                "Min Flats": "1",
-                "Total": "15"
+                "Min Flats": "0",
+                "Total": "14"
             }
         ]
     },
@@ -166,10 +166,10 @@
             {
                 "location_kn": "ಬಿದರಹಳ್ಳಿ",
                 "location_en": "Bidarahalli",
-                "SC flats": "385",
-                "GEN flats": "515",
-                "Min Flats": "22",
-                "Total": "922"
+                "SC flats": "388",
+                "GEN flats": "521",
+                "Min Flats": "25",
+                "Total": "934"
             }
         ]
     },
@@ -188,41 +188,41 @@
                 "location_kn": "ಅಗ್ರಹಾರ ಪಾಳ್ಯ 29",
                 "location_en": "Agraharapalya",
                 "SC flats": "116",
-                "GEN flats": "14",
+                "GEN flats": "15",
                 "Min Flats": "1",
-                "Total": "131"
+                "Total": "132"
             },
             {
                 "location_kn": "ಇಟಗಲ್ ಪುರ",
                 "location_en": "Unknown (ಇಟಗಲ್ ಪುರ)",
-                "SC flats": "9",
+                "SC flats": "7",
                 "GEN flats": "1",
                 "Min Flats": "0",
-                "Total": "10"
+                "Total": "8"
             },
             {
                 "location_kn": "ಕಡತನಮಲೆ",
                 "location_en": "Unknown (ಕಡತನಮಲೆ)",
-                "SC flats": "39",
+                "SC flats": "29",
                 "GEN flats": "0",
                 "Min Flats": "6",
-                "Total": "45"
+                "Total": "35"
             },
             {
                 "location_kn": "ಕುಕ್ಕನಹಳ್ಳಿ",
                 "location_en": "Kukkanahalli",
-                "SC flats": "50",
-                "GEN flats": "7",
+                "SC flats": "47",
+                "GEN flats": "0",
                 "Min Flats": "2",
-                "Total": "59"
+                "Total": "49"
             },
             {
                 "location_kn": "ಕುಕ್ಕನಹಳ್ಳಿ",
                 "location_en": "Kukkanahalli",
                 "SC flats": "55",
-                "GEN flats": "36",
+                "GEN flats": "35",
                 "Min Flats": "0",
-                "Total": "91"
+                "Total": "90"
             },
             {
                 "location_kn": "ಕೋಲವೂರಾಯನಹಳ್ಳಿ",
@@ -235,10 +235,10 @@
             {
                 "location_kn": "ಗೋವಿಂದಪುರ",
                 "location_en": "Govindapura",
-                "SC flats": "52",
-                "GEN flats": "8",
+                "SC flats": "53",
+                "GEN flats": "9",
                 "Min Flats": "3",
-                "Total": "63"
+                "Total": "65"
             },
             {
                 "location_kn": "ಗೌಡನಹಳ್ಳಿ",
@@ -251,10 +251,10 @@
             {
                 "location_kn": "ತಮ್ಮರಸನಹಳ್ಳಿ",
                 "location_en": "Menasiganahalli",
-                "SC flats": "62",
-                "GEN flats": "17",
-                "Min Flats": "3",
-                "Total": "82"
+                "SC flats": "55",
+                "GEN flats": "16",
+                "Min Flats": "2",
+                "Total": "73"
             },
             {
                 "location_kn": "ತೋಟಗೆರೆ",
@@ -283,18 +283,18 @@
             {
                 "location_kn": "ಬೆತ್ತನಗೆರೆ",
                 "location_en": "Bettanagere",
-                "SC flats": "478",
-                "GEN flats": "393",
+                "SC flats": "472",
+                "GEN flats": "394",
                 "Min Flats": "92",
-                "Total": "963"
+                "Total": "958"
             },
             {
                 "location_kn": "ಬಿಳಿಜಾಜಿ",
                 "location_en": "Unknown (ಬಿಳಿಜಾಜಿ)",
-                "SC flats": "633",
-                "GEN flats": "275",
-                "Min Flats": "1",
-                "Total": "909"
+                "SC flats": "632",
+                "GEN flats": "268",
+                "Min Flats": "0",
+                "Total": "900"
             },
             {
                 "location_kn": "ಮಲ್ಲಸಂದ್ರ",
@@ -361,9 +361,9 @@
                 "location_kn": "ದೇವಗೆರೆ",
                 "location_en": "Devagere",
                 "SC flats": "2",
-                "GEN flats": "1",
+                "GEN flats": "0",
                 "Min Flats": "0",
-                "Total": "3"
+                "Total": "2"
             },
             {
                 "location_kn": "ದೇವಗೆರೆ",
@@ -384,26 +384,26 @@
             {
                 "location_kn": "ನೆಲಗುಳಿ ಭಾಗ-3",
                 "location_en": "Nelaguli",
-                "SC flats": "26",
+                "SC flats": "27",
                 "GEN flats": "0",
                 "Min Flats": "0",
-                "Total": "26"
+                "Total": "27"
             },
             {
                 "location_kn": "ಪುನಗಮಾರನಹಳ್ಲಿ",
                 "location_en": "Punagamaranahalli",
-                "SC flats": "82",
+                "SC flats": "80",
                 "GEN flats": "0",
                 "Min Flats": "0",
-                "Total": "82"
+                "Total": "80"
             },
             {
                 "location_kn": "ಮುದ್ದಯನಪಾಳ್ಯ",
                 "location_en": "Muddayyanapalya",
-                "SC flats": "1367",
-                "GEN flats": "1400",
+                "SC flats": "1362",
+                "GEN flats": "1401",
                 "Min Flats": "292",
-                "Total": "3059"
+                "Total": "3055"
             }
         ]
     }
