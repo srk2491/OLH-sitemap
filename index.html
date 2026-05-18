@@ -1,40 +1,118 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Housing Sites</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
-    <link rel="stylesheet" href="style.css?v=4">
+    <title>Housing Sites</title>
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+    <link
+    rel="stylesheet"
+    href="style.css?v=15">
+
 </head>
 
 <body>
 
 <div id="container">
 
+    <!-- SIDEBAR -->
     <div id="sidebar">
+
         <h2>Housing Sites</h2>
 
-        <input type="text" id="searchBox" placeholder="Search site..." />
+        <!-- BHK FILTER -->
+        <select id="bhkFilter">
 
-        <select id="talukFilter">
-            <option value="All">All Taluks</option>
+            <option value="1">
+                1 BHK
+            </option>
+
+            <option value="2">
+                2 BHK
+            </option>
+
         </select>
 
+        <!-- SEARCH -->
+        <input
+            type="text"
+            id="searchBox"
+            placeholder="Search site..."
+        />
+
+        <!-- TALUK FILTER -->
+        <select id="talukFilter">
+
+            <option value="All">
+                All Taluks
+            </option>
+
+        </select>
+
+        <!-- SITE LIST -->
         <h3>Sites</h3>
+
         <div id="siteList"></div>
 
+        <!-- DETAILS -->
         <h3>Details</h3>
-        <div id="details">Select a site</div>
+
+        <div id="details">
+            Click a site
+        </div>
+
     </div>
 
-    <div id="map"></div>
+    <!-- MAP -->
+    <div id="map">
+
+        <!-- LEGEND -->
+        <div id="legend">
+
+            <h4>Legend</h4>
+
+            <div>
+                <span class="legend-circle red"></span>
+                0 Flats
+            </div>
+
+            <div>
+                <span class="legend-circle orange"></span>
+                1-10 Flats
+            </div>
+
+            <div>
+                <span class="legend-circle green"></span>
+                >10 Flats
+            </div>
+
+            <div>
+                <span class="legend-circle black"></span>
+                Selected
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
-<button id="toggleBtn">☰ Sites</button>
+<!-- MOBILE BUTTON -->
+<button id="toggleBtn">
+    ☰ Sites
+</button>
 
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="script.js?v=4"></script>
+<script
+src="https://unpkg.com/leaflet/dist/leaflet.js">
+</script>
+
+<script src="script.js?v=15"></script>
 
 </body>
 </html>
